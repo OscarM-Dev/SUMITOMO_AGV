@@ -1,0 +1,8 @@
+prefix=/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/vision
+
+Name: vision
+Description: Description of vision
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib -ldrivetrain
+Requires: roscpp std_msgs

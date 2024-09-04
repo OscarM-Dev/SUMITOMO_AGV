@@ -1,0 +1,167 @@
+<?xml version="1.0" ?>
+
+<launch>
+    <!-- ===== Arguments =====-->
+    <arg name="rviz_config" value="$(find drivetrain)/spawn_simple.rviz"/>
+    <arg name="CAN_config" value="$(find drivetrain)/config/can_bus.yaml"/>
+    <arg name="CAN_controller" value="$(find drivetrain)/config/can_motor_controller.yaml"/>
+    <arg name="CAN_nodes" value="$(find drivetrain)/config/motor_nodes.yaml"/>
+
+    <!--
+    <arg name="world_name" default="$(find drivetrain)/world/empty_world.world"/> -->
+ <!-- Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
+
+    <!-- ===== Add .yamls to the parameter server ===== -->
+
+    <!-- Load robot description -->
+        <!-- Note: This loads the URDF of the robot -->
+    <!-- <param name="robot_description" textfile="$(find drivetrain)/urdf/robot.urdf" /> -->
+        <!-- Note: This converts from xacro to URDF of the robot -->
+    <!--
+
+   B <param name="robot_description" command="$(find xacro)/xacro $(find drivetrain)/urdf/simple_agv.xacro"  />  -->
+
+    <!-- Load joint controller configurations from YAML file to parameter server -->
+    <!-- <rosparam command="load" file="$(arg CAN_controller)"/> -->
+
+    <!-- Bus configuration (canSetup.sh) 
+    <node name="canSetup" pkg="drivetrain" type="canSetUp.sh">
+    </node> -->
+    
+    <!-- ===== Launch ROS nodes ===== -->
+        <!-- Load CAN configuration node (file) -->
+    <node name="canopen_chain" pkg="canopen_chain_node" type="canopen_chain_node" output="screen" clear_params="false">
+        <rosparam command="load" file="$(arg CAN_config)" />
+        <rosparam command="load" file="$(arg CAN_controller)" />
+        <rosparam command="load" file="$(arg CAN_nodes)" />
+    </node>
+       <!-- Can communication log 
+    <node name="can_com_log" pkg="drivetrain" type="can-com-fix.sh">
+    </node>  
+-->
+
+       <!--Can communication verify
+    <node name="can_com_verify" pkg="drivetrain" type="can-monitor.py">
+    </node>      
+-->
+
+	<!-- Load DriverInit.py node 
+    <node name="SmartrisDriverInit" pkg="drivetrain" type="SmartrisDriverInit.py">
+    </node>  -->
+
+<!--
+    <node name="SmartrisDriverInit2" pkg="drivetrain" type="SmartrisDriverInit.py"> >
+    </node>  -->
+
+
+    <!-- Camera and line detector nodes -->
+    <node name="camera" pkg="vision" type="camera.py">
+    </node>  
+    <node name="line_detector" pkg="vision" type="line_detector.py">
+    </node>  
+    <!-- App and line folower nodes -->
+    <node name="follower" pkg="vision" type="line_follower.py">
+    </node>  
+    <!-- CODIGO PARA LEVANTAR EL SERIAL DE ARDUINO -->
+    <node name="serial" pkg="rosserial_python" type="serial_node.py">
+    </node> 
+ 
+
+        <!-- Load robot joint state publisher -->
+        <!-- Note: Reads the robot model description, finds all of the joints, and publishes joint 
+        values to all of the nonfixed joints. Different sources for the values of each joint are also available.
+        Along with a GUI to visualize and intreact with the robot.
+        -->
+        <!--
+
+    B<node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" /> -->
+    
+    <!-- Load robot state publisher -->
+        <!--Note: This package reads the current robot joint states and publishes the 3D poses 
+        of each robot link using the kinematics tree built from the URDF. 
+        The 3D pose of the robot is published as the tf (transform) ROS. 
+        The tf ROS publishes the relationship between the coordinate frames of a robot. 
+        convert joint states to TF transforms for rviz, etc -->
+       <!--
+    B <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"> -->
+        <!-- Note: The following also connects the robot state publisher to Gazebo -->
+        <!-- <remap from="/joint_states" to="/drivetrain/joint_states" /> -->
+<!--
+B    </node>
+-->
+    <!-- Load rviz configuration -->
+    <!-- <node pkg="rviz" type="rviz" name="rviz" output="screen"/> -->
+    <!--
+
+   B <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_config)" required="true" /> -->
+
+    <!-- load the controllers -->
+    <!--
+
+    B<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+     B   output="screen" ns="/drivetrain" args="joint1_position_controller 
+      B                                      joint2_position_controller 
+                                            joint_state_controller"/> -->
+
+
+    <!-- TODO: Remebber to make a node that transforms from the world frame to the base link-->
+
+    <!-- ===== Load Gazebo plugin ===== -->
+        <!-- set command arguments --> 
+	<!--
+    B    <arg name="command_arg1" value="-u"/> 
+    B    <arg name="command_arg2" value="-r"/> 
+-->
+<!--
+    B    <arg name="script_type" value="debug"/>
+    B    <arg name="gui" default="false"/>  -->
+
+
+    
+    <!-- start gazebo server-->
+    <!--
+
+   B <node name="gazebo" pkg="gazebo_ros" type="$(arg script_type)" respawn="false" output="screen"B	
+ B         args="$(arg command_arg1) $(arg command_arg2) $(arg command_arg3) $(arg world_name)" />
+-->	
+
+    <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+    <!--
+
+B    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+B	args="-urdf -model simple_agv -param robot_description -x 0 -y 0 -z 0.5"/>  -->
+
+    <!--       robot:name in URDF || loaded params with URDF || spawn point--> 
+    
+
+    
+    <!-- start gazebo client -->
+<!--
+B    <group if="$(arg gui)">
+ B       <node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" respawn="false" output="screen"/>
+  B  </group>  -->
+
+    <!-- manda la señal de los motores de acuerdo a Ultra y cmd_vel (appSmartris.py) -->
+<!--
+B    <node name="appSmartris" pkg="drivetrain" type="appSmartris.py">
+B    </node> 
+-->
+
+       <!-- Can communication log -->
+    <node name="can_com_log" pkg="drivetrain" type="can-com-fix.sh">
+    </node>
+       <!--Can communication verify 
+    <node name="can_com_verify" pkg="drivetrain" type="can-monitor.py">
+    </node>
+    <node name="can_com_verify1" pkg="drivetrain" type="can-monitor.py">
+    </node>
+-->
+
+       <!--Driver-Status verify 
+    <node name="driver_status_verify" pkg="drivetrain" type="get-fun.py">
+    </node>  -->
+
+       <!--Hector_slam integrations -->
+    <include file="$(find hector_slam_launch)/launch/tutorial.launch"/>
+
+</launch>

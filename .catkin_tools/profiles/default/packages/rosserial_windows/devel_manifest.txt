@@ -1,0 +1,5 @@
+rosserial/rosserial_windows
+/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/rosserial_windows/cmake.lock /home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/./cmake.lock
+/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/rosserial_windows/lib/pkgconfig/rosserial_windows.pc /home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/lib/pkgconfig/rosserial_windows.pc
+/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/rosserial_windows/share/rosserial_windows/cmake/rosserial_windowsConfig.cmake /home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/share/rosserial_windows/cmake/rosserial_windowsConfig.cmake
+/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/rosserial_windows/share/rosserial_windows/cmake/rosserial_windowsConfig-version.cmake /home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/share/rosserial_windows/cmake/rosserial_windowsConfig-version.cmake

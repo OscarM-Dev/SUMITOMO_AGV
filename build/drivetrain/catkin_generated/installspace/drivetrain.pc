@@ -1,0 +1,8 @@
+prefix=/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/install
+
+Name: drivetrain
+Description: Description of drivetrain
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib -ldrivetrain
+Requires: roscpp std_msgs can_msgs canopen_chain_node nodelet pluginlib controller_manager joint_state_controller robot_state_publisher urdf rviz xacro tf geometry_msgs gazebo_ros gazebo_ros_control gazebo_msgs gazebo_plugins

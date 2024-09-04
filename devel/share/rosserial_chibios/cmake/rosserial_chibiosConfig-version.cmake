@@ -1,0 +1,1 @@
+/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/rosserial_chibios/share/rosserial_chibios/cmake/rosserial_chibiosConfig-version.cmake

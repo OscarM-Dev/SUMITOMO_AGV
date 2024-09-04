@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<!-- === Constants === -->
+  <!--NOTE: This file should only contain constant values-->
+<xacro:property name="base_height" value="0.3"/>
+<xacro:property name="base_width" value="0.5"/>
+<xacro:property name="base_length" value="0.65"/>
+
+<xacro:property name="wheel_base" value="0.10"/>
+<xacro:property name="wheel_radio" value="0.095"/> 
+<xacro:property name="wheel_mass" value="1"/> 
+
+<!-- === Mesh properties===-->
+<xacro:property name="mesh_scale" value="1.0 1.0 1.0"/> 
+<xacro:property name="chassis_path" value="package://drivetrain/urdf/base_link.STL"/> 
+
+<xacro:property name="wheel_dist" value="0.57"/> 
+
+<xacro:property name="chassis_weight" value="20"/> 
+
+<!-- TODO: Correct the caster_rad value -->
+<xacro:property name="caster_rad" value="${wheel_radio}"/>
+
+<xacro:property name="trans_ratio" value="1"/>
+<!--Note: The direction should be signaled with as (1 || -1) -->
+
+
+</robot>

@@ -1,0 +1,2 @@
+rosserial/rosserial
+/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/rosserial/cmake.lock /home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/./cmake.lock

@@ -1,0 +1,1 @@
+/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/rosserial_msgs/share/gennodejs/ros/rosserial_msgs/msg/TopicInfo.js

@@ -1,0 +1,6 @@
+devel_space: /home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel
+install: false
+install_space: /home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/install
+profile: default
+source_space: /home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/src
+workspace: /home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws

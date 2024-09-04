@@ -1,0 +1,1 @@
+/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/zed_nodelets/lib/python2.7/dist-packages/zed_nodelets/cfg/__init__.py

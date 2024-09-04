@@ -1,0 +1,1 @@
+/home/sumitomo/Documents/SumiyomoAGV/sumitomo_ws/devel/.private/rosserial_tivac/lib/pkgconfig/rosserial_tivac.pc
