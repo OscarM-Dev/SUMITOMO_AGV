@@ -1,4 +1,7 @@
-# Project dependencies:
+# Project overview
+This project contains the initialization, control and navigation algorithms developed in ROS for an AGV using industrial servomotors SMARTRIS.
+
+## Project dependencies:
 
 This workspace depends on other projects and packages to work properly. Please install them before trying to build.
 
